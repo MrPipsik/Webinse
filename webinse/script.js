@@ -1,6 +1,7 @@
 $(document).ready(function(){
   get_users();
   $(".new-user-modal").hide();
+  $(".error").hide();
   $("#show-modal").on("click", function(){
     $(".new-user-modal").toggle();
   });
@@ -26,17 +27,28 @@ function remove (id) {
   get_users();
 }
 
+function validation(input) {
+  var value = $("input[name="+input+"]").val();
+  if(value.length < 4 || value.length > 16) {
+    $(".error-"+input).show();
+    return false;
+  }
+  return true;
+}
+
 function add_user() {
   var first = $("input[name=first]").val();
   var second = $("input[name=second]").val();
   var email = $("input[name=email]").val();
 
-  $.ajax({
-    type: "POST",
-    url: "add_user.php",
-    data: "first="+first+"&second="+second+"&email="+email,
-    success: get_users()
-  });
+  if(validation("first") && validation("second") && email !== ""){
+    $.ajax({
+      type: "POST",
+      url: "add_user.php",
+      data: "first="+first+"&second="+second+"&email="+email,
+      success: get_users()
+    });
+  }
 
   get_users();
 }

@@ -16,11 +16,13 @@
       </div>
       <span id="show-modal" class="button">Add User</span>
       <div class="new-user-modal">
-        <span class="label">First name</span><br>
+        <span class="label">First name*</span><br>
+        <span class="error-first error">First name length should be between 4 and 16 symbols!</span><br>
         <input type="text" name="first" required><br>
-        <span class="label">Second name</span><br>
+        <span class="label">Second name*</span><br>
+        <span class="error-second error">Second name length should be between 4 and 16 symbols!</span><br>
         <input type="text" name="second" required><br>
-        <span class="label">Email</span><br>
+        <span class="label">Email*</span><br>
         <input type="text" name="email" required><br>
         <button onclick="add_user()" class="button submit">Submit</button>
       </div>

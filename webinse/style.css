@@ -56,3 +56,8 @@ input{
   text-align: center;
   width: 400px;
 }
+
+.error{
+  color: red;
+  font-size: 12px;
+}
